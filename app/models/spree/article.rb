@@ -2,11 +2,11 @@ module Spree
   class Article < Spree::Base
     self.table_name = 'spree_articles'
 
-    translates :title, :text,  fallbacks_for_empty_translations: true
-    globalize_accessors attributes: %i[title text]
+    include SpreeGlobalize::Translatable
+    translates :title, :text, :meta_title, :meta_description, :meta_keywords, fallbacks_for_empty_translations: true
 
-    extend FriendlyId
-    friendly_id :slug_candidates, use: %i[slugged finders]
+    # extend FriendlyId
+    # friendly_id :slug_candidates, use: %i[slugged finders]
 
     scope :published, -> { where(publish: true).where('published_at < ?', DateTime.now).includes(:translations) }
 

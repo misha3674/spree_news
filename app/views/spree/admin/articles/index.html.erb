@@ -1,1 +1,39 @@
-<h1>Articles</h1>
+<% content_for :page_title do %>
+  <%= plural_resource_name(Spree::Article) %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <span id="new_ot_link">
+    <%= button_link_to Spree.t(:new_article), new_object_url, { class: "btn-success", icon: 'add', id: 'new_article_link' } %>
+  </span>
+<% end if can?(:create, Spree::Article) %>
+
+<div id="new_article"></div>
+
+<% if @articles.any? %>
+<table class="table sortable" id="listing_articles" data-hook>
+  <thead>
+    <tr data-hook="article_header">
+      <th><%= Spree.t(:name) %></th>
+      <th class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr class="spree_article <%= cycle('odd', 'even')%>" id="<%= spree_dom_id article %>" data-hook="option_row">
+        <td><%= article.title %></td>
+        <td class="actions actions-2 text-right">
+          <%= link_to_edit(article, class: 'admin_edit_article', no_text: true) if can?(:edit, article) %>
+          <%= link_to_with_icon('translate', nil, spree.admin_translations_path('articles', article.id), title: Spree.t(:'i18n.translations'), class: 'btn btn-sm btn-primary') %>
+          <%= link_to_delete(article, no_text: true) if can?(:delete, article) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <div class="alert alert-info no-objects-found">
+    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::Article)) %>,
+    <%= link_to Spree.t(:add_one), new_object_url if can?(:create, Spree::Article) %>!
+  </div>
+<% end %>

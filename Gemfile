@@ -13,7 +13,6 @@ gem 'rails-controller-testing'
 
 gem 'rubocop', require: false
 gem 'rubocop-rspec', require: false
-gem 'spree_i18n', github: 'spree-contrib/spree_i18n', branch: 'updating_extension_to_rails_6_spree_4'
 gem 'spree_globalize', github: 'spree-contrib/spree_globalize', branch: 'rails_6_spree_4'
 
 gemspec
