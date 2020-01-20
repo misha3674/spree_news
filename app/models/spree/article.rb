@@ -13,7 +13,7 @@ module Spree
     def should_generate_new_friendly_id?
       new_record?
     end
-  
+
     def normalize_friendly_id input
       input.to_slug.normalize(transliterations: :ukrainian).to_s
     end
