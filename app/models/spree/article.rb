@@ -5,6 +5,8 @@ module Spree
     include SpreeGlobalize::Translatable
     translates :title, :text, :meta_title, :meta_description, :meta_keywords, fallbacks_for_empty_translations: true
 
+    has_rich_text :content
+
     # extend FriendlyId
     # friendly_id :slug_candidates, use: %i[slugged finders]
 
@@ -13,7 +15,7 @@ module Spree
     def should_generate_new_friendly_id?
       new_record?
     end
-  
+
     def normalize_friendly_id input
       input.to_slug.normalize(transliterations: :ukrainian).to_s
     end
