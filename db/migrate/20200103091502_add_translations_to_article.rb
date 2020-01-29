@@ -2,7 +2,8 @@ class AddTranslationsToArticle < SpreeExtension::Migration[4.2]
   def up
     params = {
       title: :string,
-      text: :text,
+      content: :text,
+      summary: :string,
       meta_title: :string,
       meta_description: :string,
       meta_keywords: :string
