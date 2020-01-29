@@ -1,5 +1,13 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  hello: "Hello world"
+uk:
+  spree:
+    title: 'Заголовок'
+    summary: 'Короткий опис'
+    content: 'Контент'
+    articles: 'Новини'
+    new_article: 'Створити новину'
+    admin:
+      tab:
+        articles: 'Новини'

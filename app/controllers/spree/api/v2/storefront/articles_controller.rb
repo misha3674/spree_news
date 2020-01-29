@@ -24,7 +24,7 @@ module Spree::Api::V2
       end
 
       def resource
-        scope.find_by(slug: params[:id]) || scope.find(params[:id])
+        scope.find(params[:id])
       end
 
       # def collection_sorter
